@@ -6,9 +6,13 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 
+// require('dotenv').config()
+require('./config/database');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const flightsRouter = require('./routes/flights');
+const reviewsRouter = require('./routes/reviews');
+const flyersRouter = require('./routes/flyers')
 
 const app = express();
 
@@ -23,7 +27,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/users', flightsRouter);
+app.use('/', reviewsRouter);
+app.use('/', flyersRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

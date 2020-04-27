@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+
+<form id="editForm" action="/flights/<%= flight.id %>?_method=PUT" method="POST" autocomplete="on">
+
+  <input class="editClass" name="flight" type="text" value="<%= flight.flight %>">
+
+  <input name="done" type="checkbox" <%= flight.done ? 'checked' : '' %> />
+
+  <label>Now Showing:</label>
+  <input type="checkbox" name="nowShowing" checked>
+
+  <input type="submit" value="Edit Flight">
+</form>
+
+<%- include('../partials/footer') %>

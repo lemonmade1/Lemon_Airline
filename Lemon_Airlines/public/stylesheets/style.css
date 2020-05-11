@@ -164,5 +164,9 @@ input, select {
 
 .odd, li, textarea {
   color: steelblue;
-  /* text-shadow: none; */
+}
+
+.editFlex {
+  display: flex;
+  justify-content: space-between;
 }

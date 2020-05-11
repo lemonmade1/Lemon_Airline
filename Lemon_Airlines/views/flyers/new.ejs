@@ -4,7 +4,7 @@
   <select>
     <% flyers.forEach((f) => { %>
       <option>
-        <%= f.name %> from <%= f.airport %>
+        <%= f.name %>, <%= f.seat %>, from <%= f.airport %>
       </option>
     <% }) %>
   </select>
@@ -25,6 +25,8 @@
     <option value="SAN">SAN</option>
   </select>
   
+  <label>Seat</label>
+  <input name="seat" required pattern="[A-F][1-9]\d?" value="ex. A25">
 
   <input class="btn" type="submit" value="Add Flyer">
 </form>

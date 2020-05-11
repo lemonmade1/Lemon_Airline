@@ -1,23 +1,38 @@
 <%- include('../partials/header') %>
 
 <form id="new-form" action="/flights" method="POST">
-  <label>Title:</label>
-  <input type="text" name="airlines">
-
-  <label>Release Year:</label>
-  <input type="text" name="releaseYear">
-
-  <label>MPAA Rating</label>
-  <select name="mpaaRating">
-    <option value="G">G</option>
-    <option value="PG">PG</option>
-    <option value="PG-13">PG-13</option>
-    <option value="R">R</option>
+  <label>Airline:</label>
+  <select name="airlines">
+    <option value="American">American</option>
+    <option value="Southwest">Southwest</option>
+    <option value="United">United</option>
   </select>
 
-  <label>Now Showing:</label>
-  <input type="checkbox" name="nowShowing" checked>
-  <input type="submit" value="Add Flight>
+  <label>Airport</label>
+  <select name="airport">
+    <option value="AUS">AUS</option>
+    <option value="DFW">DFW</option>
+    <option value="DEN">DEN</option>
+    <option value="LAX">LAX</option>
+    <option value="SAN">SAN</option>
+  </select>
+
+  <label>Flight Number:</label>
+  <input type="number" name="flightNum">
+
+  <label>Departs:</label>
+  <input type="datetime-local" name="departs">
+
+  <label>Destination</label>
+  <select name="destination">
+    <option value="AUS">AUS</option>
+    <option value="DFW">DFW</option>
+    <option value="DEN">DEN</option>
+    <option value="LAX">LAX</option>
+    <option value="SAN">SAN</option>
+  </select>
+
+  <input type="submit" value="Add Flight">
 </form>
 
 <%- include('../partials/footer') %>

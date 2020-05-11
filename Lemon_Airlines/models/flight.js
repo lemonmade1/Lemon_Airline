@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const performerSchema = require('./flyer');
+
 const reviewSchema = new Schema({
   content: String,
   rating: {
@@ -13,32 +15,53 @@ const reviewSchema = new Schema({
   timestamps: true
 });
 
-const flightSchema = new Schema({
+const destinationSchema = new Schema({
+  arrival: {
+    type: Date,
+  },
+  
+  airport2: {
+    type: String,    
+    enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'],
+    default: 'DEN',
+    required: true,
+  },
+})      
 
-  airline: {
+const flightSchema = new Schema({
+  airlines: {
     type: String,
     enum: ['American', 'Southwest', 'United'],
     required: true,
   },
 
   airport: {
-    type: String,
-    required: true,
+    type: String,    
     enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'],
     default: 'DEN',
+    required: true,
   },
   
   flightNum: {
     type: Number,
     min: 10,
-    max: 9999
+    max: 99999
   },
 
-  departs: Date,
+  departs: {
+    type: Date,
+  }, 
+
+  destination: [destinationSchema],
+
+  reviews: [reviewSchema],
   
-  // mpaaRating: String,
-  
-  cast: [String]
+  cast: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Flyer'
+  }], 
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('Flight', flightSchema);

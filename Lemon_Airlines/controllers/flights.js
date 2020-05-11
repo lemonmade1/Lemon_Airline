@@ -41,7 +41,7 @@ const newFlight = (req, res) => {
   });
 }
 
-// CREATE
+// CREATE FLIGHT
 const create = (req, res) => {
 
   // convert nowShowing's checkbox of nothing or "on" to boolean

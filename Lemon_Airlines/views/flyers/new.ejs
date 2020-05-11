@@ -2,9 +2,9 @@
 
 <p>Please first ensure that the Flyer is not in the dropdown
   <select>
-    <% flyers.forEach(function(f) { %>
+    <% flyers.forEach((f) => { %>
       <option>
-        <%= f.name %> departs on <%= f.departs %> from (<%= f.airport %>)
+        <%= f.name %> from (<%= f.airport %>)
       </option>
     <% }) %>
   </select>
@@ -16,16 +16,7 @@
   <label>Departure Date:</label>
   <input type="datetime-local" name="departs">
 
-  <label>Airport:</label>
-  <select name="airport">
-    <option value="AUS">AUS</option>
-    <option value="DFW">DFW</option>
-    <option value="DEN" selected>DEN</option>
-    <option value="LAX">LAX</option>
-    <option value="SAN">SAN</option>
-  </select>
-
-  <input type="submit" value="Add Flyer">
+  <input class="btn" type="submit" value="Add Flyer">
 </form>
 
 <%- include('../partials/footer') %>

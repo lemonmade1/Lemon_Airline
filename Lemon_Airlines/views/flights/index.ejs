@@ -1,31 +1,28 @@
 <%- include('../partials/header') %>
+
 <table id="list">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Release<br>Year</th>
+      <th>Ticket ID #</th>
+      <th>Airlines</th>
+      <th>Flight #</th>
       <th>Details</th>
-      <th>Delete<br>Year</th>
+      <th>Delete</th>
       <th>Edit</th>
     </tr>
   </thead>
   <tbody>
     <% flights.forEach((f) => { %>
       <tr>
+        <td><%= f.id.substr(5,5) %></td>
         <td><%= f.airlines %></td>
-        <td><%= f.releaseYear %></td>
-        <td>
-          <a href="/flights/<%= f._id %>">
-            DETAILS
-          </a>
-        </td>
-
+        <td><%= f.flightNum %></td>
+        <td><a href="/flights/<%= f._id %>">DETAILS</a></td>
         <td>
           <form action="/flights/<%= f.id %>?_method=DELETE" method="POST">
             <input type="submit" value="DELETE" />
           </form>
-        </td>
-  
+        </td>  
         <td><a href="/flights/<%= f.id %>/edit">Edit</a></td>
       </tr>
       </tr>

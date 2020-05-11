@@ -6,7 +6,6 @@ mongoose.connect('mongodb://localhost/flights', {
   useUnifiedTopology: true,
 });
 
-// shortcut to mongoose.connection object
 const db = mongoose.connection;
 
 db.on('connected', () => {

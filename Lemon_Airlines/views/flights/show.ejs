@@ -1,19 +1,26 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
-  <div> Ticket ID Number: <%= flight.id.substr(5,5) %> </div>
-  <div> Airlines: <%= flight.airlines %> </div>
-  <div> Flight Number: <%= flight.flightNum %> </div>
-  <div> Airport: <%= flight.airport %> </div>
-  <!-- <div> Destination: <%= flight.destination %> </div> -->
-  <div> Departs: <%= flight.departs %> </div>
-  <div> Cast:
-    <ul>
+  <div> Ticket ID Number: </div>
+  <div class="odd"> <%= flight.id.substr(5,5) %> </div>
+  <div> Airlines: </div>
+  <div class="odd"> <%= flight.airlines %> </div>
+  <div> Flight Number: </div>
+  <div class="odd"> <%= flight.flightNum %> </div>
+  <div> Airport: </div>
+  <div class="odd"> <%= flight.airport %> </div>
+  <div> Destination: </div>
+  <div class="odd"> <%= flight.airport2 %> </div>
+  <div> Departs: </div>
+  <div class="odd"> <%= flight.departs %> </div>
+  <div> Cast: </div>
+  <div >
+    <ul class="odd">
       <%- flight.cast.map(f => 
       `<li>${f.name} <small>${f.departs.toLocaleDateString()}</small></li>`
     ).join('') %>
     </ul>
-  </div>
+  </div> 
 </section>
 
 <form id="add-per-to-cast" action="/flights/<%= flight._id%>/flyers" method="POST">

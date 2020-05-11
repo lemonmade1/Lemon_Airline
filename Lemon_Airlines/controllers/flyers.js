@@ -3,7 +3,6 @@ const Flight = require('../models/flight');
 
 const create = (req, res) => {
   const s = req.body.departs;
-
   req.body.departs = `${s.substr(5,2)}-${s.substr(8,2)}-${s.substr(0,4)}`;
 
   Flyer.create(req.body, (err, flyer) => {

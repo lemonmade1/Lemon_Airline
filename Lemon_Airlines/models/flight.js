@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const performerSchema = require('./flyer');
-
 const reviewSchema = new Schema({
   content: String,
   rating: {
@@ -20,7 +18,7 @@ const destinationSchema = new Schema({
     type: Date,
   },
   
-  airport2: {
+  destination: {
     type: String,    
     enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'],
     default: 'DEN',
@@ -50,6 +48,9 @@ const flightSchema = new Schema({
 
   departs: {
     type: Date,
+    default: () => {
+      return new Date().getFullYear() + 1;
+    }
   }, 
 
   destination: [destinationSchema],

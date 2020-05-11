@@ -14,14 +14,11 @@ const index = (req, res) => {
 // SHOW NEW FLIGHT
 const show = (req, res) => {
   Flight.findById(req.params.id)
-    .populate('cast')
-    .exec((err, flight) => {
-      Flyer.find({
-        _id: {
+    .populate('cast').exec((err, flight) => {
+      Flyer.find({ _id: {
           $nin: flight.cast
         }
       }, (err, flyers) => {
-
         res.render('flights/show', {
           title: 'Flight Detail',
           user: req.user,
@@ -30,7 +27,7 @@ const show = (req, res) => {
         });
       }
     );
-   });
+  });
 }
 
 // CREATE NEW FLIGHT
@@ -43,12 +40,6 @@ const newFlight = (req, res) => {
 
 // CREATE FLIGHT
 const create = (req, res) => {
-
-  // convert nowShowing's checkbox of nothing or "on" to boolean
-  req.body.nowShowing = !!req.body.nowShowing;
-  for (let key in req.body) {
-    if (req.body[key] === '') delete req.body[key];
-  }
   const flight = new Flight(req.body);
   flight.save((err) => {
     if (err) return res.redirect('/flights/new');

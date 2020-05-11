@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const performerSchema = new Schema({
+const flyerSchema = new Schema({
   name: {
     type: String, 
     required: true, 
@@ -9,7 +9,6 @@ const performerSchema = new Schema({
   },
     
   departs: Date,
-
 
   airport: {
     type: String,
@@ -23,4 +22,4 @@ const performerSchema = new Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('Flyer', performerSchema);
+module.exports = mongoose.model('Flyer', flyerSchema);

@@ -21,8 +21,8 @@ const destinationSchema = new Schema({
   destination: {
     type: String,    
     enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'],
-    default: 'DEN',
-    required: true,
+    // default: 'DEN',
+    // required: true,
   },
 })      
 
@@ -52,6 +52,11 @@ const flightSchema = new Schema({
       return new Date().getFullYear() + 1;
     }
   }, 
+
+  seat: {
+    type: Number,
+    pattern: "[A-F][1-9]\d?",
+  },
 
   destination: [destinationSchema],
 

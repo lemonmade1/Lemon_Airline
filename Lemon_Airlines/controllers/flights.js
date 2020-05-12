@@ -40,9 +40,26 @@ const newFlight = (req, res) => {
 
 // CREATE FLIGHT
 const create = (req, res) => {
-  const flight = new Flight(req.body);
+  const up = {
+    airlines: req.body.airlines,
+    airport: req.body.airport,
+    flightNum: req.body.flightNum,
+    departs: req.body.departs,
+    seats: req.body.seats
+  }
+
+  const flight = new Flight(up);
+  let destination = { 
+    destination: req.body.destination 
+  }
+  console.log(req.body)
+    flight.destination.push(destination);
+
   flight.save((err) => {
-    if (err) return res.redirect('/flights/new');
+    if (err) { 
+      console.log("hello", err)
+      return res.redirect('/flights/new');
+    }
   
     res.redirect(`/flights/${flight._id}`, 301, {
       user: req.user
